@@ -1,20 +1,31 @@
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema( {
-    bookName: String, 
-    authorName: String, 
-    tags: [String],
-    
-    isPublished: Boolean,
+    bookName: {
+        type:String,
+        unique: true,
+        required: true
+    },
     prices: {
         indianPrice: String,
         europePrice: String,
     },
-    sales: {type: Number, default: 10}
+    year:{
+        type:Number,
+        default:2021
+    }, 
+    tags: {
+        type:String,
+        enum:["Romance","Sci-Fi","Horror","Development","Motivational","Adventure"]
+    },
+    authorName: String, 
+    totalPages:Number,
+    isPublished: Boolean,
+    stockAvailable: Boolean
 }, { timestamps: true });
 
 
-module.exports = mongoose.model('Book', bookSchema) //users
+module.exports = mongoose.model('Book-Collection', bookSchema) //users
 
 //Validation:
 //require:true
