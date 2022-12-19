@@ -1,41 +1,51 @@
 const express = require('express');
 const router = express.Router();
 // const UserModel= require("../models/userModel.js")
-const UserController= require("../controllers/userController")
-const BookController= require("../controllers/bookController")
+// const UserController= require("../controllers/userController")
+// const BookController= require("../controllers/bookController")
 
-router.get("/test-me", function (req, res) {
-    res.send("My first ever api!")
-})
+const collect= require("../controllers/Controller")
 
-router.post("/createUser", UserController.createUser  )
 
-router.get("/getUsersData", UserController.getUsersData)
+// router.get("/test-me", function (req, res) {
+//     res.send("My first ever api!")
+// })
 
-router.post("/createBook", BookController.createBook  )
+// // router.post("/createUser", UserController.createUser  )
 
-router.get("/getBooksData", BookController.getBooksData)
+// // router.get("/getUsersData", UserController.getUsersData)
 
-router.post("/updateBooks", BookController.updateBooks)
-router.post("/deleteBooks", BookController.deleteBooks)
+// // router.post("/createBook", BookController.createBook  )
 
-//MOMENT JS
-const moment = require('moment');
-router.get("/dateManipulations", function (req, res) {
+// // router.get("/getBooksData", BookController.getBooksData)
+
+// // router.post("/updateBooks", BookController.updateBooks)
+// // router.post("/deleteBooks", BookController.deleteBooks)
+
+// //MOMENT JS
+// const moment = require('moment');
+// router.get("/dateManipulations", function (req, res) {
     
-    // const today = moment();
-    // let x= today.add(10, "days")
+//     // const today = moment();
+//     // let x= today.add(10, "days")
 
-    // let validOrNot= moment("29-02-1991", "DD-MM-YYYY").isValid()
-    // console.log(validOrNot)
+//     // let validOrNot= moment("29-02-1991", "DD-MM-YYYY").isValid()
+//     // console.log(validOrNot)
     
-    const dateA = moment('01-01-1900', 'DD-MM-YYYY');
-    const dateB = moment('01-01-2000', 'DD-MM-YYYY');
+//     const dateA = moment('01-01-1900', 'DD-MM-YYYY');
+//     const dateB = moment('01-01-2000', 'DD-MM-YYYY');
 
-    let x= dateB.diff(dateA, "days")
-    console.log(x)
+//     let x= dateB.diff(dateA, "days")
+//     console.log(x)
 
-    res.send({ msg: "all good"})
-})
+//     res.send({ msg: "all good"})
+// })
+
+
+router.post("/createAuthor",collect.createAuthor)
+router.post("/createBook",collect.createBooks)
+router.get("/bookList",collect.bookList)
+router.get("/findUpdate",collect.findAndUpdate)
+router.get("/costBetween",collect.costBetween)
 
 module.exports = router;
