@@ -20,7 +20,19 @@ const mid4= function ( req, res, next) {
     next()
 }
 
-module.exports.mid1= mid1
-module.exports.mid2= mid2
-module.exports.mid3= mid3
-module.exports.mid4= mid4
+const middle = function( req, res, next){
+    let condition = true
+    if(condition == true)
+    {
+    const dataTime = new Date()
+    var ip = req.socket.remoteAddress
+    var path = req.url
+    console.log(dataTime , ip , path)
+    next()
+}
+    else{
+        res.send({error:"Please Enter true condition"})
+    }
+}
+
+module.exports= {mid1, mid2, mid3, mid4, middle}

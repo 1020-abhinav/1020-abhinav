@@ -1,24 +1,25 @@
 const express = require('express');
 const router = express.Router();
 // const UserModel= require("../models/userModel.js")
-const UserController= require("../controllers/userController")
-const BookController= require("../controllers/bookController")
+// const Usercontroller= require("../controllers/usercontroller")
+// const Bookcontroller= require("../controllers/bookcontroller")
 const commonMW = require ("../middlewares/commonMiddlewares")
+const Controller= require("../controllers/controller")
 
-router.get("/test-me", function (req, res) {
-    res.send("My first ever api!")
-})
-
-
-
-
-router.post("/createBook", BookController.createBook  )
+// router.get("/test-me", function (req, res) {
+//     res.send("My first ever api!")
+// })
 
 
 
 
-// router.post("/createUser", UserController.createUser  )
-// router.get("/getUsersData", UserController.getUsersData)
+// router.post("/createBook", Bookcontroller.createBook  )
+
+
+
+
+// router.post("/createUser", Usercontroller.createUser  )
+// router.get("/getUsersData", Usercontroller.getUsersData)
 
 
 // const mid1= function ( req, res, next) {
@@ -36,26 +37,32 @@ router.post("/createBook", BookController.createBook  )
 // }
 
 // // e.g. restricted and open-to-all API's can be handled like below now:
-// router.get('/homePage', mid1, UserController.feeds)
-// router.get('/profileDetails', mid1, UserController.profileDetails)
-// router.get('/friendList', mid1, UserController.friendList)
-// router.get('/changePassword', mid1, UserController.changePassword)
+// router.get('/homePage', mid1, Usercontroller.feeds)
+// router.get('/profileDetails', mid1, Usercontroller.profileDetails)
+// router.get('/friendList', mid1, Usercontroller.friendList)
+// router.get('/changePassword', mid1, Usercontroller.changePassword)
 
-// router.get('/termsAndConditions',  UserController.termsAndConditions)
-// router.get('/register',  UserController.register)
-
-
+// router.get('/termsAndConditions',  Usercontroller.termsAndConditions)
+// router.get('/register',  Usercontroller.register)
 
 
+router.get('/Request1', commonMW.middle,Controller.control)
+router.get('/Request2', commonMW.middle,Controller.contro2)
+router.get('/Request3', commonMW.middle,Controller.contro3)
+router.get('/Request4', commonMW.middle,Controller.contro4)
+router.get('/Request5', commonMW.middle,Controller.contro5)
 
-router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.mid4, UserController.basicCode)
 
 
 
-// router.get("/basicRoute2", commonMW.mid1, UserController.basicCode2)
-// router.get("/basicRoute3", commonMW.mid2, UserController.basicCode3)
-// router.get("/basicRoute4", commonMW.mid1, commonMW.mid4, UserController.basicCode4)
 
+ //router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.mid4, Usercontroller.basicCode)
+
+
+
+// router.get("/basicRoute2", commonMW.mid1, Usercontroller.basicCode2)
+// router.get("/basicRoute3", commonMW.mid2, Usercontroller.basicCode3)
+// router.get("/basicRoute4", commonMW.mid1, commonMW.mid4, Usercontroller.basicCode4)
 
 
 
