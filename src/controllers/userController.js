@@ -72,7 +72,7 @@ const getUserData = async function (req, res) {
 
   res.send({ status: true, data: userDetails });
   // Note: Try to see what happens if we change the secret while decoding the token
-};
+}
 
 const updateUser = async function (req, res) {
   // Do the same steps here:
