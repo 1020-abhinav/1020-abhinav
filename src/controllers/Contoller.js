@@ -37,12 +37,12 @@ const getUserData = async function(req,res){
     }
 
 const getUpData = async function(req,res){
-        let getData = await userModel.findOneAndUpdate({_id:req.params.userId},{$set:{'firstName':"Abhi"}})
+        let getData = await userModel.findOneAndUpdate({_id:req.params.userId},{$set:req.body})
         res.send({msg:getData})
     }    
 
 const getDeleted = async function(req,res){
-    let getdelet = await userModel.findOneAndUpdate({_id:req.params.userId},{$set:{'isDeleted':true}})
+    let getdelet = await userModel.findOneAndUpdate({_id:req.params.userId},{$set:{'isDeleted':false}},{new:true})
     res.send({status:true,msg:getdelet})
 }    
 module.exports.createData = createData;

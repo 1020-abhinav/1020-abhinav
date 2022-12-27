@@ -12,10 +12,10 @@ router.post("/user", Controller.createData )
 router.post("/logIn",Middleware.middle,Controller.Userlogin  )
 
 
-router.get("/users/:userId",Middleware.middle,Controller.getUserData)
+router.get("/users/:userId",Middleware.middle,Middleware.middle2,Controller.getUserData)
 
-router.get("/users/:userId",Middleware.middle,Controller.getUpData)
+router.get("/useres/:userId",Middleware.middle,Middleware.middle2,Controller.getUpData)
 
-router.get("/user/:userId",Middleware.middle,Controller.getDeleted)
+router.get("/user/:userId",Middleware.middle,Middleware.middle2,Controller.getDeleted)
 
 module.exports = router
