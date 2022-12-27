@@ -9,7 +9,7 @@ const Middleware = require("../Middleware/middleware")
 
 router.post("/user", Controller.createData )
 
-router.post("/logIn",Middleware.middle,Controller.Userlogin  )
+router.post("/logIn",Controller.Userlogin  )
 
 
 router.get("/users/:userId",Middleware.middle,Middleware.middle2,Controller.getUserData)
