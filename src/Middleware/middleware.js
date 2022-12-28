@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+
 const middle = function(req,res,next){
     let value = 'x-auth-token' in req.headers
     console.log(req.headers)
@@ -11,18 +12,20 @@ const middle = function(req,res,next){
 }
 
 const middle2 = async function(req,res,next){
-    let token = req.headers["x-auth-token"]
-    let decode = await jwt.verify(token,"abhinav-secret-key",(err,decode)=>{
-    if (err)
-    return res.send({ status: false, msg: "token is invalid" });
-    return decode
-    })
+    try{
+        let token = req.headers["x-auth-token"]
+        let decode = await jwt.verify(token,"abhinav-secret-key")
 
     let loginID = decode.userId
     let UserId = req.params.userId
-    if(loginID != UserId) return res.send({status:false,msg:"Please Enter the valid UserId"})
+    if(loginID != UserId) return res.status(403).send({status:false,error:"Please Enter the valid UserId"})
    next()
+}catch(error){
+    console.log("This is the error :", error.message)
+    res.status(403).send({ msg: "Error", error: error.message })
 }
+}
+
 
 // const middle3 = async function(req,res,next){
 //     let token = req.headers["x-auth-token"]

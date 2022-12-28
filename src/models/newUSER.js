@@ -4,8 +4,15 @@ const UserSchema = new mongoose.Schema( {
     firstName : String,
     lastName : String,
     mobile : String,
-    emailId : String,
-    password :String,
+    emailId : {
+        type:String,
+        require:true
+    },
+    password :{
+        type:String,
+        unique:true,
+        require:true
+    },
     gender : {
         type:String,
         enum:["male","female","other"]
